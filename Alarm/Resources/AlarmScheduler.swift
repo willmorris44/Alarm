@@ -22,7 +22,7 @@ extension AlarmScheduler {
         
         let content = UNMutableNotificationContent()
         content.title = "Alarm"
-        content.body = "Alarm is going off"
+        content.body = "\(alarm.name) is going off"
         content.sound = .default
         let dateComponents = Calendar.current.dateComponents([.day, .hour, .minute, .second], from: alarm.fireDate)
         let dateTrigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
