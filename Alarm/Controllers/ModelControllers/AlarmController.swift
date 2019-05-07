@@ -8,13 +8,9 @@
 
 import Foundation
 
-class AlarmController {
+class AlarmController: AlarmScheduler {
     
     static var shared = AlarmController()
-    
-    init() {
-        self.alarms = mockAlarms
-    }
     
     var alarms = [Alarm]()
     
@@ -26,24 +22,77 @@ class AlarmController {
         return [alarm1, alarm2, alarm3]
     }
     
+    init() {
+        //self.alarms = mockAlarms
+        alarms = loadFromPersistanceStore()
+    }
+    
     func addAlarm(fireDate: Date, name: String, enabled: Bool) {
         let alarm = Alarm(name: name, fireDate: fireDate, enabled: enabled)
         alarms.append(alarm)
+        
+        scheduleUserNotifications(for: alarm)
+        saveToPersistanceStore()
     }
     
     func update(alarm: Alarm, fireDate: Date, name: String, enabled: Bool) {
         alarm.fireDate = fireDate
         alarm.name = name
         alarm.enabled = enabled
+        
+        saveToPersistanceStore()
     }
     
     func delete(alarm: Alarm) {
         guard let index = alarms.firstIndex(of: alarm) else { return }
         alarms.remove(at: index)
+        
+        cancelUserNotifications(for: alarm)
+        
+        saveToPersistanceStore()
     }
     
     func toggleEnabled(for alarm: Alarm) {
         alarm.enabled = !alarm.enabled
+        if alarm.enabled == true {
+            scheduleUserNotifications(for: alarm)
+        } else {
+            cancelUserNotifications(for: alarm)
+        }
     }
-    
+
+    //MARK: Persistance
+
+    func fileURL() -> URL {
+        let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let documentDirectory = path[0]
+        let filename = "alarm.json"
+        let fullURL = documentDirectory.appendingPathComponent(filename)
+        return fullURL
+    }
+
+    func saveToPersistanceStore() {
+        let encoder = JSONEncoder()
+        
+        do {
+            let data = try encoder.encode(alarms)
+            try data.write(to: fileURL())
+        } catch {
+            print("There was an error encoding: \(error) : \(error.localizedDescription)")
+        }
+    }
+
+    func loadFromPersistanceStore() -> [Alarm] {
+        let decoder = JSONDecoder()
+        
+        do {
+            let data = try Data(contentsOf: fileURL())
+            let alarms = try decoder.decode([Alarm].self, from: data)
+            return alarms
+        } catch {
+            print("There was an error encoding: \(error) : \(error.localizedDescription)")
+        }
+        return []
+    }
+
 }

@@ -8,12 +8,12 @@
 
 import Foundation
 
-class Alarm {
+class Alarm: Codable {
     
     var fireDate: Date
     var name: String
     var enabled: Bool
-    let uuid: String = ""
+    let uuid: String
         
     var fireTimeAsString: String {
             let dateFormatter = DateFormatter()
@@ -22,10 +22,11 @@ class Alarm {
             return dateFormatter.string(from: fireDate)
     }
     
-    init(name: String, fireDate: Date, enabled: Bool) {
+    init(name: String, fireDate: Date, enabled: Bool, uuid: String = UUID().uuidString) {
         self.fireDate = fireDate
         self.name = name
         self.enabled = enabled
+        self.uuid = uuid
     }
     
 }
