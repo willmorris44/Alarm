@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E40E5156228211F4007C40FD /* AlarmScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40E5155228211F4007C40FD /* AlarmScheduler.swift */; };
 		E4AA263D2280C9F100BDE9CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AA263C2280C9F100BDE9CA /* AppDelegate.swift */; };
 		E4AA26422280C9F100BDE9CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4AA26402280C9F100BDE9CA /* Main.storyboard */; };
 		E4AA26442280C9F200BDE9CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4AA26432280C9F200BDE9CA /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E40E5155228211F4007C40FD /* AlarmScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmScheduler.swift; sourceTree = "<group>"; };
 		E4AA26392280C9F100BDE9CA /* Alarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4AA263C2280C9F100BDE9CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4AA26412280C9F100BDE9CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				E4AA26432280C9F200BDE9CA /* Assets.xcassets */,
 				E4AA26452280C9F200BDE9CA /* LaunchScreen.storyboard */,
 				E4AA26482280C9F200BDE9CA /* Info.plist */,
+				E40E5155228211F4007C40FD /* AlarmScheduler.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 			files = (
 				E4AA26532280CB1200BDE9CA /* AlarmDetailTableViewController.swift in Sources */,
 				E4AA26572280CBA600BDE9CA /* SwitchTableViewCell.swift in Sources */,
+				E40E5156228211F4007C40FD /* AlarmScheduler.swift in Sources */,
 				E4AA265A2280D0D300BDE9CA /* Alarm.swift in Sources */,
 				E4AA263D2280C9F100BDE9CA /* AppDelegate.swift in Sources */,
 				E4AA26502280CA8B00BDE9CA /* AlarmListTableViewController.swift in Sources */,
